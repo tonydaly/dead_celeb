@@ -17,7 +17,8 @@ class TwitterStream
     http = EventMachine::HttpRequest.new(filter_url).
       post(:body=>{"track"=>term},
            :head => {"Content-Type" => "application/x-www-form-urlencoded"},
-           :accepts => "application/json",
+           :connection_timeout => 0,
+           :inactivity_timeout => 0,
            :timeout => -1) do |client|
              twitter_oauth_consumer.sign!(client, twitter_oauth_access_token)
            end
