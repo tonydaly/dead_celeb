@@ -17,19 +17,11 @@ DeadCelebrities.controllers :celebrities do
   # get "/example" do
   #   "Hello world!"
   # end
+  layout :application
 
   get :index, :map => '/' do
     @celebrities = Celebrity.all
-    render 'celebrities/index'
-
-
-EM.run do
-  twitter = TwitterStream.new
-
-  twitter.listen('dead') do |tweet|
-    ap tweet
-  end
-end
+     render 'celebrities/index'
   end
 
   get :show, :with => :id do
