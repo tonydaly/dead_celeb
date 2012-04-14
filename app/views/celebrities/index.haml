@@ -6,6 +6,7 @@
 
     channel.bind('death', function(data) {
       console.log('Death: ' + data.message);
+      scrollTweets(data.message);
     });
   });
 
