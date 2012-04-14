@@ -21,6 +21,9 @@ require 'bundler/setup'
 
 Bundler.require(:default, PADRINO_ENV)
 
+Pusher.app_id = '18557'
+Pusher.key    = '3e82ccea5da2b7f29a25'
+Pusher.secret = '2b51ae2d10dcfe2b9b3f'
 ##
 # Enable devel logging
 #
@@ -69,3 +72,23 @@ Padrino.after_load do
 end
 
 Padrino.load!
+
+
+EM.run do
+  puts "In event loop"
+  stream = TwitterStream.new
+
+  puts "Stream instantiated"
+
+  stream.listen("asd") do |tweet|
+    EventMachine.defer do
+      puts "tweet received #{tweet}"
+
+      Pusher['dead_celebs'].trigger_async('death', {message: tweet})
+    end
+  end
+
+   Rack::Handler::Thin.run Padrino.application
+end
+
+

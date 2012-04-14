@@ -9,6 +9,9 @@
     %meta{:content => "", :name => "author"}
     / Le styles
     %link{:href => "stylesheets/bootstrap.css", :rel => "stylesheet"}
+
+    %script(src = "javascripts/jquery.js")
+
     :css
       body {
         padding-top: 60px;
@@ -100,4 +103,7 @@
     %script{:src => "javascripts/bootstrap-collapse.js"}
     %script{:src => "javascripts/bootstrap-carousel.js"}
     %script{:src => "javascripts/bootstrap-typeahead.js"}
-    %script{:src => "javascripts/application.js"}
+
+    %script(src = "http://js.pusher.com/1.11/pusher.min.js")
+
+    %script(src = "javascripts/application.js")
