@@ -1,3 +1,14 @@
 - @title = "Welcome"
+:javascript
+  $(function(){
+    var pusher = new Pusher('3e82ccea5da2b7f29a25'); // Replace with your app key
+    var channel = pusher.subscribe('dead_celebs');
+
+    channel.bind('death', function(data) {
+      console.log('Death: ' + data.message);
+    });
+  });
+
+
 
 #posts= partial 'celebrities/celebrity', :collection => @celebrities

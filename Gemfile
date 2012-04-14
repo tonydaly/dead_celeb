@@ -5,6 +5,7 @@ gem 'em-http-request'
 gem 'awesome_print'
 gem 'yajl-ruby'
 gem 'pusher'
+
 gem 'em-http-oauth-request'
 
 # Server requirements

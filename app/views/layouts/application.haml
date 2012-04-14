@@ -9,6 +9,9 @@
     %meta{:content => "", :name => "author"}
     / Le styles
     %link{:href => "stylesheets/bootstrap.css", :rel => "stylesheet"}
+
+    %script(src = "javascripts/jquery.js")
+
     :css
       body {
         padding-top: 60px;
@@ -86,18 +89,21 @@
       Le javascript
       \==================================================
     / Placed at the end of the document so the pages load faster
-    %script{:src => "javascripts/jquery.js"}
-    %script{:src => "javascripts/bootstrap-transition.js"}
-    %script{:src => "javascripts/bootstrap-alert.js"}
-    %script{:src => "javascripts/bootstrap-modal.js"}
-    %script{:src => "javascripts/bootstrap-dropdown.js"}
-    %script{:src => "javascripts/bootstrap-scrollspy.js"}
-    %script{:src => "javascripts/bootstrap-tab.js"}
-    %script{:src => "javascripts/bootstrap-tooltip.js"}
-    %script{:src => "javascripts/bootstrap-popover.js"}
-    %script{:src => "javascripts/bootstrap-button.js"}
-    %script{:src => "javascripts/bootstrap-collapse.js"}
-    %script{:src => "javascripts/bootstrap-carousel.js"}
-    %script{:src => "javascripts/bootstrap-typeahead.js"}
-    %script{:src => "javascripts/application.js"}
+
+    %script(src = "javascripts/bootstrap-transition.js")
+    %script(src = "javascripts/bootstrap-alert.js")
+    %script(src = "javascripts/bootstrap-modal.js")
+    %script(src = "javascripts/bootstrap-dropdown.js")
+    %script(src = "javascripts/bootstrap-scrollspy.js")
+    %script(src = "javascripts/bootstrap-tab.js")
+    %script(src = "javascripts/bootstrap-tooltip.js")
+    %script(src = "javascripts/bootstrap-popover.js")
+    %script(src = "javascripts/bootstrap-button.js")
+    %script(src = "javascripts/bootstrap-collapse.js")
+    %script(src = "javascripts/bootstrap-carousel.js")
+    %script(src = "javascripts/bootstrap-typeahead.js")
+
+    %script(src = "http://js.pusher.com/1.11/pusher.min.js")
+
+    %script(src = "javascripts/application.js")
 
