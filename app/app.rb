@@ -19,7 +19,7 @@ class DeadCelebrities < Padrino::Application
     auth = request.env["omniauth.auth"]
     puts auth["user_info"]["nickname"]
     user = User.first_or_create(:uid => auth["uid"],
-      :nickname => auth["user_info"]["nickname"], 
+      :nickname => auth["user_info"]["nickname"],
       :name => auth["user_info"]["name"])
     session[:user_id] = user.id
     redirect '/'

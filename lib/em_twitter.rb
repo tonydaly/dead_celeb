@@ -60,10 +60,3 @@ class TwitterStream
 end
 
 
-EM.run do
-  twitter = TwitterStream.new
-
-  twitter.listen(ARGV[0]) do |tweet|
-    ap tweet
-  end
-end

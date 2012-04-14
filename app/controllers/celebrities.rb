@@ -21,6 +21,12 @@ DeadCelebrities.controllers :celebrities do
   get :index, :map => '/' do
     @celebrities = Celebrity.all
     render 'celebrities/index'
+
+    twitter = TwitterStream.new
+
+    twitter.listen(ARGV[0]) do |tweet|
+      EM.next_tick{ ap tweet}
+    end
   end
 
   get :show, :with => :id do

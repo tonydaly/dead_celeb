@@ -6,4 +6,7 @@
 
 require File.expand_path("../config/boot.rb", __FILE__)
 
-run Padrino.application
+require 'eventmachine'
+EM.start do
+  run Padrino.application
+end

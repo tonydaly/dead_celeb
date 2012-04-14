@@ -3,6 +3,8 @@ source :rubygems
 gem 'eventmachine'
 gem 'em-http-request'
 gem 'em-http-oauth-request'
+gem 'awesome_print'
+gem 'yajl-ruby'
 
 # Server requirements
 gem 'thin' # or mongrel
@@ -32,3 +34,4 @@ gem 'padrino', '0.10.6'
 # %w(core gen helpers cache mailer admin).each do |g|
 #   gem 'padrino-' + g, '0.10.6'
 # end
+
