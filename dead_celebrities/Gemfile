@@ -1,5 +1,9 @@
 source :rubygems
 
+gem 'eventmachine'
+gem 'em-http-request'
+gem 'em-http-oauth-request'
+
 # Server requirements
 gem 'thin' # or mongrel
 # gem 'trinidad', :platform => 'jruby'
