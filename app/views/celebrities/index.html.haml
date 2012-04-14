@@ -1,0 +1,19 @@
+%h1 Listing celebrities
+
+%table
+  %tr
+    %th Name
+    %th
+    %th
+    %th
+
+  - @celebrities.each do |celebrity|
+    %tr
+      %td= celebrity.name
+      %td= link_to 'Show', celebrity
+      %td= link_to 'Edit', edit_celebrity_path(celebrity)
+      %td= link_to 'Destroy', celebrity, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Celebrity', new_celebrity_path
