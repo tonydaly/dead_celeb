@@ -31,22 +31,15 @@ end
 
 Padrino.load!
 
+$celebrities = {}
 
 EM.run do
-  puts "In event loop"
-  stream = TwitterStream.new
+  puts 'loading celebs'
 
-  puts "Stream instantiated"
-
-  stream.listen("asd") do |tweet|
-    EventMachine.defer do
-      puts "tweet received #{tweet}"
-
-      Pusher['dead_celebs'].trigger_async('death', {message: tweet})
-    end
+  Celebrity.all.each do |c|
+    puts "adding celeb: #{c.name}"
+    DeathStream.new c
   end
 
-   Rack::Handler::Thin.run Padrino.application
+  Rack::Handler::Thin.run Padrino.application
 end
-
-

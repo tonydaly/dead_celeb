@@ -9,9 +9,13 @@ require 'yajl'
 
 class TwitterStream
   def listen term
+    @search = term
+
     http = EventMachine::HttpRequest.new('https://stream.twitter.com/1/statuses/filter.json').
       post(:body=>{"track"=>term},
            :head => {"Content-Type" => "application/x-www-form-urlencoded"},
+           :connection_timeout => 0,
+           :inactivity_timeout => 0,
            :timeout => -1) do |client|
              twitter_oauth_consumer.sign!(client, twitter_oauth_access_token)
            end
