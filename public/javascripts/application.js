@@ -27,6 +27,8 @@ function scrollTweets(){
 	
 	//hscrollTweetIDe new tweet
 	$("#"+scrollTweetID).hide();
+	$("#"+(scrollTweetID+1)).hide();
+	$("#"+(scrollTweetID+2)).hide();	
 	setTimeout(scrollTweets, 1000);
 }
 //run the bitch;
