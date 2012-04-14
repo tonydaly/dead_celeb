@@ -1,9 +1,7 @@
-%p#notice= notice
+%label{:class => "label"}= t("activerecord.attributes.celebrity.name", :default => t("activerecord.labels.name", :default => "Name")) + ":"
+%p= @celebrity.name
 
-%p
-  %b Name:
-  = @celebrity.name
-
-= link_to 'Edit', edit_celebrity_path(@celebrity)
-\|
-= link_to 'Back', celebrities_path
+.form-actions
+  = link_to "Back", celebrities_path, :class => 'btn'
+  = link_to "Edit", edit_celebrity_path(@celebrity), :class => 'btn'
+  = link_to "Delete", celebrity_path(@celebrity), :method => "delete", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}", :class => 'btn'

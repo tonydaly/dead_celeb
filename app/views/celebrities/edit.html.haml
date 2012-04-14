@@ -1,7 +1,3 @@
-%h1 Editing celebrity
-
-= render 'form'
-
-= link_to 'Show', @celebrity
-\|
-= link_to 'Back', celebrities_path
+= form_for @celebrity, :url => celebrity_path(@celebrity), :html => { :class => "edit_celebrity", :id => "edit_celebrity" } do |f|
+  %input{:name => "_method", :type => "hidden", :value =>"put"}
+  = render :partial => "form", :locals => {:f => f}

@@ -1,19 +1,21 @@
-%h1 Listing celebrities
-
-%table
-  %tr
-    %th Name
-    %th
-    %th
-    %th
-
-  - @celebrities.each do |celebrity|
+%h1 Celebrities
+%table{:class => "table table-striped"}
+  %thead
     %tr
-      %td= celebrity.name
-      %td= link_to 'Show', celebrity
-      %td= link_to 'Edit', edit_celebrity_path(celebrity)
-      %td= link_to 'Destroy', celebrity, :confirm => 'Are you sure?', :method => :delete
+      %th ID
+      %th
+        = t("activerecord.attributes.celebrity.name", :default => t("activerecord.labels.name", :default => "Name"))
+      %th Created at
+      %th Actions
+  %tbody
+    - @celebrities.each do |celebrity|
+      %tr
+        %td= celebrity.id
+        %td= link_to celebrity.name, celebrity_path(celebrity)
+        %td= celebrity.created_at
+        %td
+          = link_to "Show", celebrity_path(celebrity)
+          = link_to "Edit", edit_celebrity_path(celebrity)
+          = link_to "Destroy", celebrity_path(celebrity), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
 
-%br
-
-= link_to 'New Celebrity', new_celebrity_path
+= link_to "New", new_celebrity_path, :class => 'btn btn-primary'
