@@ -8,8 +8,8 @@ function scrollTweets(){
 	if(scrollTweetID>=3){	
 		//slide down
 		$("#"+scrollTweetID).slideDown();
-		$("#"+scrollTweetID+1).slideDown();
-		$("#"+scrollTweetID+2).slideDown();
+		$("#"+(scrollTweetID+1)).slideDown();
+		$("#"+(scrollTweetID+2)).slideDown();
 	}
 	
 	//control box size
@@ -22,8 +22,8 @@ function scrollTweets(){
 	scrollTweetID = scrollTweetID + 3 ;
 	
 	$("#RecentDeaths").prepend("<p id=\"" + scrollTweetID + "\">"+deathTweet+"</p>");
-	$("#fatalHopefulls").prepend("<p id=\"" + scrollTweetID +1 + "\">"+fatalatyTweet+"</p>");
-	$("#wishList").prepend("<p id=\"" + scrollTweetID +2 + "\">"+wishTweet+"</p>");
+	$("#fatalHopefulls").prepend("<p id=\"" + (scrollTweetID +1) + "\">"+fatalatyTweet+"</p>");
+	$("#wishList").prepend("<p id=\"" + (scrollTweetID +2) + "\">"+wishTweet+"</p>");
 	
 	//hscrollTweetIDe new tweet
 	$("#"+scrollTweetID).hide();
