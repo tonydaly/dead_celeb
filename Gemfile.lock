@@ -17,7 +17,6 @@ GEM
     awesome_print (1.0.2)
     bcrypt-ruby (3.0.1)
     builder (3.0.0)
-    cookiejar (0.3.0)
     daemons (1.1.8)
     em-http-oauth-request (0.1.0)
       em-http-request (>= 0.2.5)
@@ -26,8 +25,6 @@ GEM
       addressable (>= 2.0.0)
       escape_utils
       eventmachine (>= 0.12.9)
-    em-redis (0.3.0)
-      eventmachine
     escape_utils (0.2.4)
     eventmachine (0.12.10)
     faraday (0.6.1)
@@ -129,7 +126,6 @@ DEPENDENCIES
   bcrypt-ruby
   em-http-oauth-request
   em-http-request
-  em-redis
   eventmachine
   haml
   oa-oauth
