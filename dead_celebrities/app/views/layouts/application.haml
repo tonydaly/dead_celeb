@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+    = stylesheet_link_tag 'application'
+    %title Who Died?
+  %body
+    %div#container
+      %h1 Who died?
+      =yield
+      - if current_user
+        = link_to 'sign out', '/sign_out' 
+      - else
+        = link_to 'sign in with twitter', '/sign_in' 

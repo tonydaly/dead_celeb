@@ -1,0 +1,6 @@
+- @title = @celebrity.name
+#show
+  .celebrity
+    .name= link_to @celebrity.name, url_for(:celebrities, :show, :id => @celebrity)
+    .twitter= @celebrity.twitter
+%p= link_to 'Home', url_for(:celebrities, :index)

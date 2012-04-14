@@ -1,0 +1,33 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active=link_to pat(:list), url(:celebrities, :index)
+      %li=link_to pat(:new), url(:celebrities, :new)
+  .content
+    %h2.title
+      =pat(:all)
+      =mt(:celebrities)
+    .inner
+      %table.table
+        %tr
+          %th.first=mat(:celebrity, :id)
+          %th=mat(:celebrity, :name)
+          %th=mat(:celebrity, :twitter)
+          %th=mat(:celebrity, :created_at)
+          %th=mat(:celebrity, :updated_at)
+          %th.last="&nbsp;"
+        -@celebrities.each do |celebrity|
+          %tr
+            %td.first=celebrity.id
+            %td=celebrity.name
+            %td=celebrity.twitter
+            %td=celebrity.created_at
+            %td=celebrity.updated_at
+            %td.last
+              =button_to pat(:edit), url(:celebrities, :edit, :id => celebrity.id), :method => :get, :class => :button_to
+              ="|"
+              =button_to pat(:delete), url(:celebrities, :destroy, :id => celebrity.id), :method => :delete, :class => :button_to, :onsubmit => "return confirm('#{pat(:confirm)}')"
+      .actions-bar.wat-cf
+        .actions="&nbsp;"
+
+-content_for :sidebar, partial("base/sidebar")
