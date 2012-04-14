@@ -3,6 +3,8 @@ source :rubygems
 gem 'eventmachine'
 gem 'em-http-request'
 gem 'em-http-oauth-request'
+require 'eventmachine'
+require 'em-http-request'
 gem 'awesome_print'
 gem 'yajl-ruby'
 

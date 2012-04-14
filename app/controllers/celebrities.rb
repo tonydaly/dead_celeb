@@ -22,11 +22,6 @@ DeadCelebrities.controllers :celebrities do
     @celebrities = Celebrity.all
     render 'celebrities/index'
 
-    twitter = TwitterStream.new
-
-    twitter.listen('news') do |tweet|
-      EM.next_tick{ ap tweet}
-    end
   end
 
   get :show, :with => :id do
