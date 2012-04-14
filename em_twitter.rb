@@ -8,12 +8,6 @@ require 'awesome_print'
 require 'yajl'
 
 class TwitterStream
-  def initialize term
-    listen term
-  end
-
-  private
-
   def listen term
     http = EventMachine::HttpRequest.new('https://stream.twitter.com/1/statuses/filter.json').
       post(:body=>{"track"=>term},
@@ -26,7 +20,7 @@ class TwitterStream
      http.disconnect { puts "oops, dropped connection?" }
 
      parser = Yajl::Parser.new.tap do |p|
-       p.on_parse_complete = lambda {|x| ap x["text"] }
+       p.on_parse_complete = lambda {|x| yield x["text"] }
      end
 
      http.stream do |chunk|
@@ -66,4 +60,10 @@ class TwitterStream
 end
 
 
-EM.run { TwitterStream.new(ARGV[0] || 'dead') }
+EM.run do
+  twitter = TwitterStream.new
+
+  twitter.listen(ARGV[0]) do |tweet|
+    ap tweet
+  end
+end
