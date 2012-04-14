@@ -7,6 +7,7 @@ gem 'yajl-ruby'
 gem 'pusher'
 
 gem 'em-http-oauth-request'
+gem 'em-redis'
 
 # Server requirements
 gem 'thin' # or mongrel
