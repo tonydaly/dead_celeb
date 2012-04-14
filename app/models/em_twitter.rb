@@ -1,3 +1,17 @@
+require 'yajl'
+
+require 'rubygems'
+require 'em-http'
+require 'em-http-oauth-request'
+require 'oauth'
+require 'json'
+require 'oauth/client/em_http'
+require 'awesome_print'
+require 'yajl'
+require 'eventmachine'
+
+
+
 class TwitterStream
   def listen term
     http = EventMachine::HttpRequest.new(filter_url).
@@ -7,6 +21,7 @@ class TwitterStream
            :timeout => -1) do |client|
              twitter_oauth_consumer.sign!(client, twitter_oauth_access_token)
            end
+
 
      http.errback    do |e|
        puts e;

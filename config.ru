@@ -5,6 +5,4 @@
 # just execute it from the command line.
 require File.expand_path("../config/boot.rb", __FILE__)
 
-EM.start do
-  run Padrino.application
-end
+run Padrino.application
