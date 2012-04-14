@@ -5,6 +5,7 @@ require 'oauth'
 require 'json'
 require 'oauth/client/em_http'
 require 'awesome_print'
+require 'yajl'
 
 class TwitterStream
   def initialize term
@@ -15,25 +16,22 @@ class TwitterStream
 
   def listen term
     http = EventMachine::HttpRequest.new('https://stream.twitter.com/1/statuses/filter.json').
-     post(:body=>{"track"=>"is dead"},
-      :head => {"Content-Type" => "application/x-www-form-urlencoded"},
-      :timeout => -1) do |client|
-      twitter_oauth_consumer.sign!(client, twitter_oauth_access_token)
-    end
+      post(:body=>{"track"=>term},
+           :head => {"Content-Type" => "application/x-www-form-urlencoded"},
+           :timeout => -1) do |client|
+             twitter_oauth_consumer.sign!(client, twitter_oauth_access_token)
+           end
 
-    http.errback    { puts "oops" }
-    http.disconnect { puts "oops, dropped connection?" }
+     http.errback    { puts "oops" }
+     http.disconnect { puts "oops, dropped connection?" }
 
+     parser = Yajl::Parser.new.tap do |p|
+       p.on_parse_complete = lambda {|x| ap x["text"] }
+     end
 
-    buffer = ""
-
-    http.stream do |chunk|
-      buffer += chunk
-      while line = buffer.slice!(/.+\r?\n/)
-        line = JSON.parse line
-        ap line["text"]
-      end
-    end
+     http.stream do |chunk|
+       parser << chunk
+     end
   end
 
   def twitter_oauth_consumer
@@ -45,12 +43,12 @@ class TwitterStream
   end
 
   def filter_url
-   'http://stream.twitter.com/1/statuses/filter.json'
+    'http://stream.twitter.com/1/statuses/filter.json'
   end
 
   #consumer
   def consumer_key
-   '6uM57iOvtBvbeGqpFeuTQ'
+    '6uM57iOvtBvbeGqpFeuTQ'
   end
 
   def consumer_secret
