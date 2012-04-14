@@ -7,8 +7,6 @@ gem 'yajl-ruby'
 gem 'pusher'
 
 gem 'em-http-oauth-request'
-require 'eventmachine'
-require 'em-http-request'
 gem 'awesome_print'
 gem 'yajl-ruby'
 
