@@ -23,9 +23,10 @@ class TwitterStream
            end
 
 
-     http.errback    do |e|
-       puts e;
-  end
+     http.errback do |e|
+       puts e
+     end
+
     http.disconnect { puts "oops, dropped connection?" }
 
      parser = Yajl::Parser.new.tap do |p|
@@ -72,5 +73,3 @@ class TwitterStream
     'FRpwYXjsvpu1OicjckuEY7Sao7BdjqpeRqpKhLG48'
   end
 end
-
-
