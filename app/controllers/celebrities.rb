@@ -24,7 +24,7 @@ DeadCelebrities.controllers :celebrities do
 
     twitter = TwitterStream.new
 
-    twitter.listen(ARGV[0]) do |tweet|
+    twitter.listen('news') do |tweet|
       EM.next_tick{ ap tweet}
     end
   end

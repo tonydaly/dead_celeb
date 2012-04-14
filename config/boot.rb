@@ -18,6 +18,19 @@ Bundler.require(:default, PADRINO_ENV)
 # Add your before load hooks here
 #
 Padrino.before_load do
+  require 'yajl'
+
+  require 'rubygems'
+  require 'em-http'
+  require 'em-http-oauth-request'
+  require 'oauth'
+  require 'json'
+  require 'oauth/client/em_http'
+  require 'awesome_print'
+  require 'yajl'
+  require 'eventmachine'
+
+
 end
 
 ##

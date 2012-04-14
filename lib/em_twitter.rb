@@ -1,30 +1,29 @@
-require 'rubygems'
-require 'em-http'
-require 'em-http-oauth-request'
-require 'oauth'
-require 'json'
-require 'oauth/client/em_http'
-require 'awesome_print'
-require 'yajl'
-
 class TwitterStream
   def listen term
-    http = EventMachine::HttpRequest.new('https://stream.twitter.com/1/statuses/filter.json').
+    http = EventMachine::HttpRequest.new(filter_url).
       post(:body=>{"track"=>term},
            :head => {"Content-Type" => "application/x-www-form-urlencoded"},
+           :accepts => "application/json",
            :timeout => -1) do |client|
              twitter_oauth_consumer.sign!(client, twitter_oauth_access_token)
            end
 
-     http.errback    { puts "oops" }
-     http.disconnect { puts "oops, dropped connection?" }
+     http.errback    do |e|
+       puts e;
+  end
+    http.disconnect { puts "oops, dropped connection?" }
 
      parser = Yajl::Parser.new.tap do |p|
        p.on_parse_complete = lambda {|x| yield x["text"] }
      end
 
      http.stream do |chunk|
-       parser << chunk
+       begin
+         parser << chunk
+       rescue Yajl::ParseError
+         ap chunk
+         ap 'never mind'
+       end
      end
   end
 

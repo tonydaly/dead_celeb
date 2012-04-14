@@ -3,10 +3,8 @@
 
 # This file can be used to start Padrino,
 # just execute it from the command line.
-
 require File.expand_path("../config/boot.rb", __FILE__)
 
-require 'eventmachine'
 EM.start do
   run Padrino.application
 end
