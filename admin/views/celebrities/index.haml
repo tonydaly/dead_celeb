@@ -13,6 +13,7 @@
           %th.first=mat(:celebrity, :id)
           %th=mat(:celebrity, :name)
           %th=mat(:celebrity, :twitter)
+          %th=mat(:celebrity, :dead)
           %th=mat(:celebrity, :created_at)
           %th=mat(:celebrity, :updated_at)
           %th.last="&nbsp;"
@@ -21,6 +22,7 @@
             %td.first=celebrity.id
             %td=celebrity.name
             %td=celebrity.twitter
+            %th=celebrity.dead
             %td=celebrity.created_at
             %td=celebrity.updated_at
             %td.last

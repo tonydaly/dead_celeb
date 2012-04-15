@@ -5,11 +5,10 @@
   %span.description Ex: a simple text
 
 .group
-  =f.label :twitter
-  =f.error_message_on :twitter
-  =f.text_field :twitter, :class => :text_field
-  %span.description Ex: a simple text
-
+  =f.label :dead
+  =f.error_message_on :dead
+  =f.check_box :dead, :class => :text_field
+  %span.description Dead?
 
 .group.navform.wat-cf
   =f.submit pat(:save), :class => :button
