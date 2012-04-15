@@ -65,23 +65,16 @@
       / Example row of columns
       .row
         .span4
-          %h2 Recent Deaths
+          %h3 Recent Deaths
           #RecentDeaths
         .span4
-          %h2 Heading
-          #WishList
-          #fatalHopefulls
-          %p
-            %a.btn{:href => "#"} View details
+          %h3 Your wishlist
+          #wishList
+
         .span4
-          %h2 Heading
-          %p
-            Donec sed odio dui. Cras justo odio, dapibus ac facilisis
-            in, egestas eget quam. Vestibulum id ligula porta felis euismod semper.
-            Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-            ut fermentum massa justo sit amet risus.
-          %p
-            %a.btn{:href => "#"} View details
+          %h3 Fatalities you would be interested in
+          #fatalHopefulls
+
       %hr
         %footer
           %p
@@ -103,8 +96,7 @@
     %script{:src => "javascripts/bootstrap-collapse.js"}
     %script{:src => "javascripts/bootstrap-carousel.js"}
     %script{:src => "javascripts/bootstrap-typeahead.js"}
-
-    %script(src = "http://js.pusher.com/1.11/pusher.min.js")
+    %script{:src => "javascripts/pusher.min.js"}
 
     %script(src = "javascripts/application.js")
     :javascript

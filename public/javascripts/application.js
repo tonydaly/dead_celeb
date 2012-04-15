@@ -1,3 +1,9 @@
+function getTweets(){
+	var pusher = new Pusher('3e82ccea5da2b7f29a25');
+	var channel = pusher.subscribe('dead_celebs');
+	pusher.bind_all(dumpMessage);
+}
+
 var scrollTweetID = 1;
 function scrollTweets(){
 	//fetch tweet
@@ -21,7 +27,6 @@ function scrollTweets(){
 	
 	scrollTweetID = scrollTweetID + 3 ;
 	
-	alert(scrollTweetID);
 	$("#RecentDeaths").prepend("<p id=\"" + scrollTweetID + "\">"+deathTweet+"</p>");
 	$("#fatalHopefulls").prepend("<p id=\"" + (scrollTweetID +1) + "\">"+fatalatyTweet+"</p>");
 	$("#wishList").prepend("<p id=\"" + (scrollTweetID +2) + "\">"+wishTweet+"</p>");
@@ -32,5 +37,9 @@ function scrollTweets(){
 	$("#"+(scrollTweetID+2)).hide();	
 	setTimeout(scrollTweets, 1000);
 }
+function dumpMessage(data){
+	alert(data.tweet);
+}
 //run the bitch;
 scrollTweets();
+getTweets();
