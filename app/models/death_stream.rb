@@ -19,7 +19,12 @@ class DeathStream
             Pusher['dead_celebs'].trigger_async('death',
                 { name: celeb.name,
                   url: "/celebrities/#{celeb.id}",
-                  tweet: tweet})
+                  tweet: tweet["text"],
+                  user: {
+                    name: tweet["user"]["name"],
+                    profile: tweet["user"]["profile_image_url"]
+                  }
+                })
           end
 
         rescue StandardError => e

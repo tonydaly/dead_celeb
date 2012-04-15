@@ -1,20 +1,22 @@
-* {
-  margin: 0;
-  padding: 0;
+#recent-deaths .tweet {
+  margin-left: 0;
 }
-html, body {
-  height: 100%
+
+.tweet .image {
+  margin-left: 0; 
 }
-body {
-  font-family: "Arial";
+
+#recent-deaths img {
+  height: 50px;
+  width: 50px;
 }
-#container {
-  margin: auto;
-  width: 800px;
-  text-align: center
+
+#recent-deaths .content {
+  margin-left: 0;
 }
-h1, h2 {
-  font-size: 400%;
-  color: #333;
-  text-stroke: 1px solid #000
+
+#recent-deaths h1 {
+  font-size: 13px;
+  line-height: 20px;
 }
+
