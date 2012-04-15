@@ -12,6 +12,7 @@ gem 'em-http-oauth-request'
 gem 'thin' # or mongrel
 gem 'twilio-rb'
 gem 'mysql2'
+gem 'bluevia'
 
 # gem 'trinidad', :platform => 'jruby'
 

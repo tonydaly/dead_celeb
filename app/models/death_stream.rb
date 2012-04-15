@@ -9,14 +9,19 @@ class DeathStream
           puts "death count #{count} #{tweet}"
 
 
-            ap "#{celeb.name} is dead - time to throw a party"
-            $celebrities[celeb.name][:count] = 0
+            if count > 10
+              ap "#{celeb.name} is dead - time to throw a party"
+              $celebrities[celeb.name][:count] = 0
 
-            Thread.new do
-              celeb.update_attribute :dead, true
+              unless celeb.dead?
+                Thread.new { celeb.update_attribute :dead, true }
+
+                Pusher['dead_celebs'].trigger_async('death',
+                    { name: celeb.name,
+                      url: "/celebrities/#{celeb.id}",
+                      tweet: tweet})
+              end
             end
-
-            Pusher['dead_celebs'].trigger_async('death', {message: "#{celeb.name}: #{tweet}"})
 
         rescue StandardError => e
           puts "Some kind of error in EventMachine.defer #{e.message} "
