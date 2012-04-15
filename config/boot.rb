@@ -33,6 +33,12 @@ Padrino.load!
 
 $celebrities = {}
 
+twilio_config = YAML.load_file("#{PADRINO_ROOT}/config/twilio.yml")[PADRINO_ENV]
+
+Twilio::Config.setup \
+  :account_sid  => twilio_config["account_sid"],
+  :auth_token   => twilio_config["auth_token"]
+
 EM.run do
   puts 'loading celebs'
 
