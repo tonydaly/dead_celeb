@@ -1,14 +1,19 @@
-%h2 Recent Deaths
+- if current_user
+  %h2 Your twinterests
+- else
+  %h2 Popular twinterests
+
 #recent-deaths
   :javascript
     $(function(){
       var pusher = new Pusher('3e82ccea5da2b7f29a25');
       var channel = pusher.subscribe('dead_celebs');
 
-      channel.bind('death', function(dead){
-        console.log(dead);
-        deadCeleb(dead);
-        appendTweet(dead);
+      var twinterest = "#{current_user ? "twinterest_#{current_user.id}" : "popular_twinterests"}";
+
+      channel.bind(twinterest, function(tweet){
+        console.log(tweet);
+        appendTweet(tweet);
       });
     });
 

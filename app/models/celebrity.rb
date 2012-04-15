@@ -1,5 +1,5 @@
 class Celebrity < ActiveRecord::Base
-  has_many :parties
+  belongs_to :user
 
   def self.dead
     where(dead: true)

@@ -3,7 +3,7 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "content-type"}
     %meta{:charset => "utf-8"}
-    %title Dead Celebs - Time for a party
+    %title Twinterest
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
     %meta{:content => "", :name => "description"}
     %meta{:content => "", :name => "author"}
@@ -41,7 +41,7 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand{:href => "#"} Dead Celebs
+          %a.brand{:href => "#"} Twinterests
           .nav-collapse
             %ul.nav
             %ul.nav.pull-right
@@ -51,17 +51,14 @@
                 - else
                   = link_to 'Sign In', '/sign_in'
 
-    .container
       .row
         .span4.logo{:style => "background-image:url(/Logo.jpeg); display:inline; height:200px; margin-left: -100px;"}
         .span4
           = render_partial 'celebrities/recent_deaths'
-        - if current_user
-          = render_partial 'parties/form'
       %hr
       .row
         .span8
-          %h1 Dead celebs
+          %h1
           = yield
 
       %hr

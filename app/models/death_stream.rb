@@ -1,34 +1,29 @@
 class DeathStream
-  def initialize celeb
+  def initialize user, celeb
     stream = TwitterStream.new
 
-    stream.listen("#{celeb.name} is dead") do |tweet|
+    stream.listen("#{celeb.name}") do |tweet|
       EventMachine.defer do
         begin
           count = $celebrities[celeb.name][:count] += 1
           puts "death count #{count} #{tweet}"
 
-          if count > 10
-            ap "#{celeb.name} is dead - time to throw a party"
-            $celebrities[celeb.name][:count] = 0
+          $celebrities[celeb.name][:count] = 0
 
-            if celeb.alive?
-              Thread.new { celeb.died! }
-            end
+          Pusher["twinterest_#{user.id}"].trigger_async('death',
+              { name: celeb.name,
+                url: "/celebrities/#{celeb.id}",
 
-            Pusher['dead_celebs'].trigger_async('death',
-                { name: celeb.name,
-                  url: "/celebrities/#{celeb.id}",
-                  tweet: tweet["text"],
-                  user: {
-                    name: tweet["user"]["name"],
-                    profile: tweet["user"]["profile_image_url"]
-                  }
-                })
-          end
+                tweet: tweet["text"],
+
+                user: {
+                  name:    tweet["user"]["name"],
+                  profile: tweet["user"]["profile_image_url"]
+                }
+              })
 
         rescue StandardError => e
-          puts "Some kind of error in EventMachine.defer #{e.message} "
+          puts "Some kind of error in EventMachine.defer #{e.message}"
           puts e.backtrace
         end
       end

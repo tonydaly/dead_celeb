@@ -42,10 +42,11 @@ Twilio::Config.setup \
 EM.run do
   puts 'loading celebs'
 
-  Celebrity.all.each do |c|
+
+  Celebrity.popular.each do |c|
     puts "adding celeb: #{c.name}"
     DeathStream.new c
-  end
+  end if false
 
   Rack::Handler::Thin.run Padrino.application
 end
