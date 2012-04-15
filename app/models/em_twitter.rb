@@ -24,11 +24,15 @@ class TwitterStream
      http.disconnect { puts "oops, dropped connection?" }
 
      parser = Yajl::Parser.new.tap do |p|
-       p.on_parse_complete = lambda {|x| yield x }
+       begin
+         p.on_parse_complete = lambda {|x| yield x }
+       rescue
+         "never mind"
+       end
      end
 
      http.stream do |chunk|
-       parser << chunk
+       parser << chunk rescue nil
      end
   end
 

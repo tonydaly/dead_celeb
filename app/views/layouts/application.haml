@@ -55,6 +55,11 @@
         .span4.logo{:style => "background-image:url(/Logo.jpeg); display:inline; height:200px; margin-left: -100px;"}
         .span4
           = render_partial 'celebrities/recent_deaths'
+        .span4
+          - if current_user
+            = render_partial 'celebrities/new'
+            - @celebrities.each do |c|
+              %li= c.name
       %hr
       .row
         .span8

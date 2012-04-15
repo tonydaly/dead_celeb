@@ -5,6 +5,12 @@
   %span.description Ex: a simple text
 
 .group
+  =f.label :user_id
+  =f.text_field :user_id, :class => :text_field
+  %span.description Ex: a simple text
+
+
+.group
   =f.label :dead
   =f.error_message_on :dead
   =f.check_box :dead, :class => :text_field

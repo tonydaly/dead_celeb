@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
   has_many :celebrities
 
+  def twinterests
+    celebrities.map &:name
+  end
+
   def notify(celebrity)
     Twilio::SMS::create to: user.number,
       from: "+442071838724",

@@ -21,14 +21,17 @@ Pusher.secret = '2b51ae2d10dcfe2b9b3f'
 # Add your before load hooks here
 #
 Padrino.before_load do
+require 'yajl'
 end
 
 ##
 # Add your after load hooks here
 #
 Padrino.after_load do
+require 'yajl'
 end
 
+require 'yajl'
 Padrino.load!
 
 $celebrities = {}
@@ -46,7 +49,7 @@ EM.run do
   Celebrity.popular.each do |c|
     puts "adding celeb: #{c.name}"
     DeathStream.new c
-  end if false
+  end
 
   Rack::Handler::Thin.run Padrino.application
 end

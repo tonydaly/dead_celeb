@@ -1,8 +1,15 @@
 DeadCelebrities.controllers :celebrities do
   get :index, :map => '/' do
-    @celebrities      = Celebrity.all
+    if current_user
+      @celebrities      = current_user.celebrities
+    else
+      @celebrities = []
+    end
     @dead_celebrities = Celebrity.dead
 
+    @celebrities.each do |c|
+      DeathStream.new c, current_user
+    end
     render 'celebrities/index'
   end
 
@@ -13,11 +20,14 @@ DeadCelebrities.controllers :celebrities do
 
   get :new do
     @celebrity = Celebrity.new
+
   end
 
   post :create do
-    celeb = Celebrity.create name: params[:name], dead: false
+    celeb = Celebrity.create name: params[:name]
 
-    DeathStream.new celeb
+    DeathStream.new celeb, current_user
+
+    redirect "/"
   end
 end

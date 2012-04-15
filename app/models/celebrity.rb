@@ -1,6 +1,10 @@
 class Celebrity < ActiveRecord::Base
   belongs_to :user
 
+  def self.popular
+    where(user_id: nil)
+  end
+
   def self.dead
     where(dead: true)
   end

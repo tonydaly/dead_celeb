@@ -1,0 +1,11 @@
+-form_for :celebrity, url(:celebrities, :create), :class => :form do |f|
+  = f.hidden_field :user_id, value: current_user.id
+  .group
+
+    =f.label :name, value: "Twinterest"
+    =f.text_field :name, value: "", :class => :text_field
+    %br
+    %span.description Ex: Justin Bieber is dead
+
+  .group.navform.wat-cf
+    =f.submit

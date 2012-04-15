@@ -7,12 +7,13 @@
   :javascript
     $(function(){
       var pusher = new Pusher('3e82ccea5da2b7f29a25');
-      var channel = pusher.subscribe('dead_celebs');
-
       var twinterest = "#{current_user ? "twinterest_#{current_user.id}" : "popular_twinterests"}";
+      var channel = pusher.subscribe(twinterest);
 
-      channel.bind(twinterest, function(tweet){
-        console.log(tweet);
+      //console.log(twinterest);
+
+      channel.bind('death', function(tweet){
+        //console.log(tweet);
         appendTweet(tweet);
       });
     });
