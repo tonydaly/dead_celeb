@@ -4,4 +4,8 @@ class Celebrity < ActiveRecord::Base
   def self.dead
     where(dead: true)
   end
+
+  def alive?
+    !dead
+  end
 end
