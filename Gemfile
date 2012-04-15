@@ -12,7 +12,7 @@ gem 'em-http-oauth-request'
 gem 'thin' # or mongrel
 gem 'twilio-rb'
 gem 'mysql2'
-gem 'bluevia'
+# gem 'bluevia'
 
 # gem 'trinidad', :platform => 'jruby'
 
@@ -27,6 +27,7 @@ gem 'haml'
 gem 'activerecord', :require => "active_record"
 gem 'sqlite3'
 gem 'oa-oauth'
+gem 'twilio-rb'
 
 # Test requirements
 
