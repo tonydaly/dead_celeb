@@ -44,17 +44,18 @@
           %a.brand{:href => "#"} Dead Celebs
           .nav-collapse
             %ul.nav
+            %ul.nav.pull-right
+              %li
+                - if current_user
+                  = link_to 'Sign Out', '/sign_out'
+                - else
+                  = link_to 'Sign In', '/sign_in'
 
     .container
       .row
         .span4{:style => "background-image:url(/Logo.jpeg); display:inline; height:200px; "}
         .span8
           %h1 Dead celebs
-          - if current_user
-            = link_to 'sign out', '/sign_out'
-          - else
-            = link_to 'sign in with twitter', '/sign_in'
-
           = yield
       .row
         .span4
