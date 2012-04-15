@@ -9,16 +9,18 @@ class DeathStream
           puts "death count #{count} #{tweet}"
 
 
-          if count > 10
             ap "#{celeb.name} is dead - time to throw a party"
             $celebrities[celeb.name][:count] = 0
-            celeb.update_attribute dead: true
+
+            Thread.new do
+              celeb.update_attribute :dead, true
+            end
 
             Pusher['dead_celebs'].trigger_async('death', {message: "#{celeb.name}: #{tweet}"})
-          end
 
         rescue StandardError => e
-          puts "Some kind of error in EventMachine.defer #{e.message} #{e.inspect}"
+          puts "Some kind of error in EventMachine.defer #{e.message} "
+          puts e.backtrace
         end
       end
 

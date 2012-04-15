@@ -1,6 +1,4 @@
 DeadCelebrities.controllers :celebrities do
-  layout :application
-
   get :index, :map => '/' do
     @celebrities = Celebrity.all
      render 'celebrities/index'

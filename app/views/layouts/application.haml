@@ -7,10 +7,10 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
     %meta{:content => "", :name => "description"}
     %meta{:content => "", :name => "author"}
-    / Le styles
-    %link{:href => "stylesheets/bootstrap.css", :rel => "stylesheet"}
 
-    %script(src = "javascripts/jquery.js")
+    %link{:href => "/stylesheets/bootstrap.css", :rel => "stylesheet"}
+
+    %script(src = "/javascripts/jquery.js")
 
     :css
       body {
@@ -18,15 +18,21 @@
         padding-bottom: 40px;
       }
 
-    %link{:href => "stylesheets/bootstrap-responsive.css", :rel => "stylesheet"}
-    / Le HTML5 shim, for IE6-8 support of HTML5 elements
+    %link{:href => "/stylesheets/bootstrap-responsive.css", :rel => "stylesheet"}
+
     /[if lt IE 9]
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    / Le fav and touch icons
-    %link{:href => "/favicon.ico", :rel => "shortcut icon"}
-    %link{:href => "http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-114-precomposed.png", :rel => "apple-touch-icon-precomposed", :sizes => "114x114"}
-    %link{:href => "http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-72-precomposed.png", :rel => "apple-touch-icon-precomposed", :sizes => "72x72"}
-    %link{:href => "http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-57-precomposed.png", :rel => "apple-touch-icon-precomposed"}
+      %script(src="http://html5shim.googlecode.com/svn/trunk/html5.js")
+
+    %link{href:"/favicon.ico", rel: "shortcut icon"}
+
+    %link{href:"http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-114-precomposed.png",
+          rel: "apple-touch-icon-precomposed",
+          :sizes => "114x114"}
+    %link{href:"http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-72-precomposed.png",
+          rel: "apple-touch-icon-precomposed",
+          :sizes => "72x72"}
+    %link{href:"http://twitter.github.com/bootstrap/assets/ico/apple-touch-icon-57-precomposed.png",
+          rel: "apple-touch-icon-precomposed"}
   %body
     .navbar.navbar-fixed-top
       .navbar-inner
@@ -38,49 +44,23 @@
           %a.brand{:href => "#"} Dead Celebs
           .nav-collapse
             %ul.nav
-              %li.active
-                %a{:href => "#"} Home
-              %li
-                %a{:href => "#about"} About
-              %li
-                %a{:href => "#contact"} Contact
-          / /.nav-collapse
+
     .container
-      / Main hero unit for a primary marketing message or call to action
       .row
-        .span4{:style => "background-image:url(Logo.jpeg); display:inline; height:200px; "}
+        .span4{:style => "background-image:url(/Logo.jpeg); display:inline; height:200px; "}
         .span8
-          %h1 Welcome to Dead Celebs!
-          %p Where celebrities are dying to make our list.
-          = yield
+          %h1 Dead celebs
           - if current_user
             = link_to 'sign out', '/sign_out'
           - else
-            = link_to 'sign in with twjtter', '/sign_in'
-          %form.navbar-search.pull-left
-            %input{"data-provide" => "typeahead", :type => "text"}
-              / Add data-toggle="button" to activate toggling on a single button
-              %button.btn{"data-toggle" => "button", :style => "margin-top:-10px;"} Search Victims
-      / Example row of columns
+            = link_to 'sign in with twitter', '/sign_in'
+
+          = yield
       .row
         .span4
-          %h2 Recent Deaths
-          #recent-deaths
-        .span4
-          %h2 Heading
-          #WishList
-          #fatalHopefulls
-          %p
-            %a.btn{:href => "#"} View details
-        .span4
-          %h2 Heading
-          %p
-            Donec sed odio dui. Cras justo odio, dapibus ac facilisis
-            in, egestas eget quam. Vestibulum id ligula porta felis euismod semper.
-            Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-            ut fermentum massa justo sit amet risus.
-          %p
-            %a.btn{:href => "#"} View details
+          = render_partial 'celebrities/recent_deaths'
+        - if current_user
+          = render_partial 'parties/form'
       %hr
         %footer
           %p
@@ -90,22 +70,22 @@
       \==================================================
     / Placed at the end of the document so the pages load faster
 
-    %script(src = "javascripts/bootstrap-transition.js")
-    %script(src = "javascripts/bootstrap-alert.js")
-    %script(src = "javascripts/bootstrap-modal.js")
-    %script(src = "javascripts/bootstrap-dropdown.js")
-    %script(src = "javascripts/bootstrap-scrollspy.js")
-    %script(src = "javascripts/bootstrap-tab.js")
-    %script(src = "javascripts/bootstrap-tooltip.js")
-    %script(src = "javascripts/bootstrap-popover.js")
-    %script(src = "javascripts/bootstrap-button.js")
-    %script(src = "javascripts/bootstrap-collapse.js")
-    %script(src = "javascripts/bootstrap-carousel.js")
-    %script(src = "javascripts/bootstrap-typeahead.js")
+    %script(src = "/javascripts/bootstrap-transition.js")
+    %script(src = "/javascripts/bootstrap-alert.js")
+    %script(src = "/javascripts/bootstrap-modal.js")
+    %script(src = "/javascripts/bootstrap-dropdown.js")
+    %script(src = "/javascripts/bootstrap-scrollspy.js")
+    %script(src = "/javascripts/bootstrap-tab.js")
+    %script(src = "/javascripts/bootstrap-tooltip.js")
+    %script(src = "/javascripts/bootstrap-popover.js")
+    %script(src = "/javascripts/bootstrap-button.js")
+    %script(src = "/javascripts/bootstrap-collapse.js")
+    %script(src = "/javascripts/bootstrap-carousel.js")
+    %script(src = "/javascripts/bootstrap-typeahead.js")
 
     %script(src = "http://js.pusher.com/1.11/pusher.min.js")
 
-    %script(src = "javascripts/application.js")
+    %script(src = "/javascripts/application.js")
     :javascript
       var GoSquared={};
       GoSquared.acct = "GSN-088811-Q";
