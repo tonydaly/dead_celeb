@@ -10,6 +10,9 @@ gem 'em-http-oauth-request'
 
 # Server requirements
 gem 'thin' # or mongrel
+gem 'twilio-rb'
+gem 'mysql2'
+
 # gem 'trinidad', :platform => 'jruby'
 
 # Project requirements
