@@ -13,7 +13,7 @@ class DeathStream
             $celebrities[celeb.name][:count] = 0
 
             if celeb.alive?
-              Thread.new { celeb.update_attribute :dead, true }
+              Thread.new { celeb.died! }
             end
 
             Pusher['dead_celebs'].trigger_async('death',

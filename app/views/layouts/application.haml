@@ -53,15 +53,17 @@
 
     .container
       .row
-        .span4{:style => "background-image:url(/Logo.jpeg); display:inline; height:200px; "}
-        .span8
-          %h1 Dead celebs
-          = yield
-      .row
+        .span4.logo{:style => "background-image:url(/Logo.jpeg); display:inline; height:200px; margin-left: -100px;"}
         .span4
           = render_partial 'celebrities/recent_deaths'
         - if current_user
           = render_partial 'parties/form'
+      %hr
+      .row
+        .span8
+          %h1 Dead celebs
+          = yield
+        
       %hr
         %footer
           %p
