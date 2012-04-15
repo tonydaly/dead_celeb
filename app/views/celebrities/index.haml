@@ -1,4 +1,5 @@
 - @title = "Welcome"
+
 :javascript
   $(function(){
     var pusher = new Pusher('3e82ccea5da2b7f29a25'); // Replace with your app key
@@ -6,10 +7,8 @@
 
     channel.bind('death', function(data) {
       console.log('Death: ' + data.message);
-      scrollTweets(data.message);
+      appendTweet(data.message);
     });
   });
-
-
 
 #posts= partial 'celebrities/celebrity', :collection => @celebrities

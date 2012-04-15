@@ -1,7 +1,7 @@
-var scrollTweets = function(deathTweet){
+var appendTweet = function(deathTweet){
   var deathTweets = [];
 
-  scrollTweets = function(deathTweet){
+  appendTweet = function(deathTweet){
     deathTweets.shift();
     deathTweets.push(deathTweet);
 
